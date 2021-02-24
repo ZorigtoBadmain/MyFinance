@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		355E6FFE25E5472F00F18662 /* AddIncomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355E6FFD25E5472F00F18662 /* AddIncomeViewController.swift */; };
 		35DBBB7525DA950100DA6DB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DBBB7425DA950100DA6DB1 /* AppDelegate.swift */; };
 		35DBBB7725DA950100DA6DB1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DBBB7625DA950100DA6DB1 /* SceneDelegate.swift */; };
 		35DBBB7C25DA950100DA6DB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35DBBB7A25DA950100DA6DB1 /* Main.storyboard */; };
@@ -19,9 +20,11 @@
 		35DBBB9D25DAA5DF00DA6DB1 /* CostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DBBB9C25DAA5DF00DA6DB1 /* CostCell.swift */; };
 		35DBBBA125DAB1E400DA6DB1 /* IncomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DBBBA025DAB1E300DA6DB1 /* IncomeViewController.swift */; };
 		35DBBBA525DAB26600DA6DB1 /* IncomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DBBBA425DAB26600DA6DB1 /* IncomeCell.swift */; };
+		E7D6D73ED6860097DA918533 /* Pods_FinanceDiplom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7120DC1BB6E599152920D6D /* Pods_FinanceDiplom.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		355E6FFD25E5472F00F18662 /* AddIncomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIncomeViewController.swift; sourceTree = "<group>"; };
 		35DBBB7125DA950100DA6DB1 /* FinanceDiplom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinanceDiplom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35DBBB7425DA950100DA6DB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35DBBB7625DA950100DA6DB1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -36,6 +39,9 @@
 		35DBBB9C25DAA5DF00DA6DB1 /* CostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostCell.swift; sourceTree = "<group>"; };
 		35DBBBA025DAB1E300DA6DB1 /* IncomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeViewController.swift; sourceTree = "<group>"; };
 		35DBBBA425DAB26600DA6DB1 /* IncomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeCell.swift; sourceTree = "<group>"; };
+		9EFA32F72417C82B2D6A1F2A /* Pods-FinanceDiplom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinanceDiplom.debug.xcconfig"; path = "Target Support Files/Pods-FinanceDiplom/Pods-FinanceDiplom.debug.xcconfig"; sourceTree = "<group>"; };
+		A4B58E541E1C165A6904F8C9 /* Pods-FinanceDiplom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinanceDiplom.release.xcconfig"; path = "Target Support Files/Pods-FinanceDiplom/Pods-FinanceDiplom.release.xcconfig"; sourceTree = "<group>"; };
+		A7120DC1BB6E599152920D6D /* Pods_FinanceDiplom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinanceDiplom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,17 +49,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7D6D73ED6860097DA918533 /* Pods_FinanceDiplom.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1394892B12A102C4B2A2DD00 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9EFA32F72417C82B2D6A1F2A /* Pods-FinanceDiplom.debug.xcconfig */,
+				A4B58E541E1C165A6904F8C9 /* Pods-FinanceDiplom.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		35DBBB6825DA950100DA6DB1 = {
 			isa = PBXGroup;
 			children = (
 				35DBBB7325DA950100DA6DB1 /* FinanceDiplom */,
 				35DBBB7225DA950100DA6DB1 /* Products */,
+				1394892B12A102C4B2A2DD00 /* Pods */,
+				5D53D38062B33F46DD5F0098 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -121,6 +140,7 @@
 			children = (
 				35DBBBA325DAB24D00DA6DB1 /* Cells */,
 				35DBBBA025DAB1E300DA6DB1 /* IncomeViewController.swift */,
+				355E6FFD25E5472F00F18662 /* AddIncomeViewController.swift */,
 			);
 			path = Income;
 			sourceTree = "<group>";
@@ -133,6 +153,14 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		5D53D38062B33F46DD5F0098 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A7120DC1BB6E599152920D6D /* Pods_FinanceDiplom.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -140,9 +168,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 35DBBB8825DA950600DA6DB1 /* Build configuration list for PBXNativeTarget "FinanceDiplom" */;
 			buildPhases = (
+				FEE7AB35EC9471DD7B83D6D7 /* [CP] Check Pods Manifest.lock */,
 				35DBBB6D25DA950100DA6DB1 /* Sources */,
 				35DBBB6E25DA950100DA6DB1 /* Frameworks */,
 				35DBBB6F25DA950100DA6DB1 /* Resources */,
+				7B79D43297FC7E60BA86ED35 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -198,6 +228,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7B79D43297FC7E60BA86ED35 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FinanceDiplom/Pods-FinanceDiplom-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FinanceDiplom/Pods-FinanceDiplom-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FinanceDiplom/Pods-FinanceDiplom-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FEE7AB35EC9471DD7B83D6D7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FinanceDiplom-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		35DBBB6D25DA950100DA6DB1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -208,6 +280,7 @@
 				35DBBB7725DA950100DA6DB1 /* SceneDelegate.swift in Sources */,
 				35DBBB7F25DA950100DA6DB1 /* FinanceDiplom.xcdatamodeld in Sources */,
 				35DBBBA525DAB26600DA6DB1 /* IncomeCell.swift in Sources */,
+				355E6FFE25E5472F00F18662 /* AddIncomeViewController.swift in Sources */,
 				35DBBB8F25DA9ABB00DA6DB1 /* HomeViewController.swift in Sources */,
 				35DBBB9925DAA4E000DA6DB1 /* CostCategoryViewController.swift in Sources */,
 				35DBBB9225DA9B3300DA6DB1 /* CategoryCell.swift in Sources */,
@@ -355,6 +428,7 @@
 		};
 		35DBBB8925DA950600DA6DB1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9EFA32F72417C82B2D6A1F2A /* Pods-FinanceDiplom.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -374,6 +448,7 @@
 		};
 		35DBBB8A25DA950600DA6DB1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A4B58E541E1C165A6904F8C9 /* Pods-FinanceDiplom.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

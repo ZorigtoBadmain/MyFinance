@@ -58,11 +58,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="addIncomeAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c0v-uO-hN1"/>
+                                    <segue destination="3XC-Em-bnD" kind="show" id="n39-ak-aiC"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="R69-qi-O2I">
-                                <rect key="frame" x="0.0" y="99" width="375" height="404"/>
+                                <rect key="frame" x="0.0" y="99" width="375" height="395"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="IncomeCell" id="xcj-5B-ALh" customClass="IncomeCell" customModule="FinanceDiplom" customModuleProvider="target">
@@ -83,9 +83,9 @@
                             <constraint firstItem="q2U-y3-1us" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7XW-Ih-5hb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="q2U-y3-1us" secondAttribute="trailing" constant="15.5" id="9AL-6G-Ezx"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TRW-Ma-8Tm" secondAttribute="trailing" constant="16" id="D5u-MY-hOJ"/>
-                            <constraint firstItem="q2U-y3-1us" firstAttribute="top" secondItem="R69-qi-O2I" secondAttribute="bottom" constant="-1" id="Pet-vR-R94"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="q2U-y3-1us" secondAttribute="bottom" constant="68" id="VQz-Oe-04w"/>
                             <constraint firstItem="TRW-Ma-8Tm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="bUf-wb-oDt"/>
+                            <constraint firstItem="q2U-y3-1us" firstAttribute="top" secondItem="R69-qi-O2I" secondAttribute="bottom" constant="8" symbolic="YES" id="ntA-8P-cU3"/>
                             <constraint firstItem="q2U-y3-1us" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15.5" id="qQ6-bZ-ThJ"/>
                             <constraint firstItem="R69-qi-O2I" firstAttribute="top" secondItem="TRW-Ma-8Tm" secondAttribute="bottom" constant="8.5" id="v4W-v8-wms"/>
                             <constraint firstItem="R69-qi-O2I" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="xKT-jL-B3M"/>
@@ -95,13 +95,14 @@
                     <tabBarItem key="tabBarItem" title="Доходы" image="circle" catalog="system" id="Bxi-ka-KDd"/>
                     <connections>
                         <outlet property="addIncomeButton" destination="q2U-y3-1us" id="FBc-C0-fLd"/>
+                        <outlet property="bottomConstraint" destination="VQz-Oe-04w" id="TWm-Pb-9LC"/>
                         <outlet property="myMoney" destination="RyF-a9-RIG" id="Bbt-V1-snt"/>
                         <outlet property="tableView" destination="R69-qi-O2I" id="0gd-6Y-fMU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1129" y="-670"/>
+            <point key="canvasLocation" x="1128.8" y="-670.61469265367316"/>
         </scene>
         <!--Расходы-->
         <scene sceneID="iFL-k7-ygn">
@@ -363,6 +364,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="hlK-cU-m98" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pPc-js-W6J">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -394,15 +396,102 @@
             </objects>
             <point key="canvasLocation" x="1926" y="93"/>
         </scene>
+        <!--Add Income View Controller-->
+        <scene sceneID="wMV-vU-ubP">
+            <objects>
+                <viewController id="3XC-Em-bnD" customClass="AddIncomeViewController" customModule="FinanceDiplom" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pkd-4s-qaP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JwW-Ir-ZUB">
+                                <rect key="frame" x="0.0" y="190" width="375" height="168"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aLv-hS-09J">
+                                        <rect key="frame" x="15.5" y="92" width="344" height="48"/>
+                                        <color key="backgroundColor" systemColor="linkColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="T0x-eo-GBo"/>
+                                            <constraint firstAttribute="width" constant="344" id="r4i-bl-YCK"/>
+                                        </constraints>
+                                        <state key="normal" title="Добавить доход">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="addIncomeAction:" destination="3XC-Em-bnD" eventType="touchUpInside" id="GO3-St-Eai"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RlY-Db-pGA">
+                                        <rect key="frame" x="30" y="45" width="291" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JpK-3O-ie6">
+                                        <rect key="frame" x="329" y="52" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="5Xg-eF-eKF"/>
+                                            <constraint firstAttribute="height" constant="20" id="9YT-42-pQF"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button" image="clear.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="closeAction:" destination="3XC-Em-bnD" eventType="touchUpInside" id="KPJ-Si-9gk"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Сумма" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0S-dP-cm1">
+                                        <rect key="frame" x="40" y="23" width="37" height="14"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <constraints>
+                                    <constraint firstItem="aLv-hS-09J" firstAttribute="centerX" secondItem="JwW-Ir-ZUB" secondAttribute="centerX" id="5Yg-I2-ky5"/>
+                                    <constraint firstItem="aLv-hS-09J" firstAttribute="top" secondItem="JpK-3O-ie6" secondAttribute="bottom" constant="20" id="7z3-Kw-m4v"/>
+                                    <constraint firstItem="RlY-Db-pGA" firstAttribute="top" secondItem="P0S-dP-cm1" secondAttribute="bottom" constant="8" symbolic="YES" id="Cgo-Uz-UcF"/>
+                                    <constraint firstAttribute="bottom" secondItem="aLv-hS-09J" secondAttribute="bottom" constant="28" id="Mxj-QJ-asB"/>
+                                    <constraint firstAttribute="height" constant="168" id="PTa-j2-N6Z"/>
+                                    <constraint firstItem="P0S-dP-cm1" firstAttribute="leading" secondItem="JwW-Ir-ZUB" secondAttribute="leading" constant="40" id="Z0e-IR-pMd"/>
+                                    <constraint firstItem="RlY-Db-pGA" firstAttribute="leading" secondItem="JwW-Ir-ZUB" secondAttribute="leading" constant="30" id="h71-xS-jWV"/>
+                                    <constraint firstItem="JpK-3O-ie6" firstAttribute="leading" secondItem="RlY-Db-pGA" secondAttribute="trailing" constant="8" symbolic="YES" id="lDl-eZ-ex9"/>
+                                    <constraint firstItem="aLv-hS-09J" firstAttribute="top" secondItem="RlY-Db-pGA" secondAttribute="bottom" constant="13" id="nvI-o9-7ZK"/>
+                                    <constraint firstAttribute="trailing" secondItem="JpK-3O-ie6" secondAttribute="trailing" constant="26" id="qXX-Ok-Bi2"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="glM-f4-9vh"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29535324003067487" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="JwW-Ir-ZUB" secondAttribute="trailing" id="85F-Mr-AuO"/>
+                            <constraint firstAttribute="bottom" secondItem="JwW-Ir-ZUB" secondAttribute="bottom" constant="289" id="NbV-rw-8sI"/>
+                            <constraint firstItem="JwW-Ir-ZUB" firstAttribute="leading" secondItem="pkd-4s-qaP" secondAttribute="leading" id="Wj8-yh-E4C"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="alT-bH-xOE"/>
+                    <connections>
+                        <outlet property="addButton" destination="aLv-hS-09J" id="xcl-V1-FZh"/>
+                        <outlet property="closeButton" destination="JpK-3O-ie6" id="5sd-mW-ihW"/>
+                        <outlet property="summatextField" destination="RlY-Db-pGA" id="NNh-KY-8QC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eeL-cJ-F7X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1925.5999999999999" y="-671.51424287856082"/>
+        </scene>
     </scenes>
     <resources>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="circle" catalog="system" width="128" height="121"/>
+        <image name="clear.fill" catalog="system" width="128" height="114"/>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
