@@ -14,7 +14,11 @@ class IncomeViewController: UIViewController {
     @IBOutlet weak var addIncomeButton: UIButton!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
-    var myIncome: [Int] = []
+    var data = Persistence.shared.getItems() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +30,9 @@ class IncomeViewController: UIViewController {
     func configure() {
         addIncomeButton.layer.cornerRadius = 24
         
-        myMoney.text = "\(myIncome.first ?? 0) руб"
+        myMoney.text = "\(Persistence.shared.summa())"
+        print(Persistence.shared.summa())
+   
     }
     
     func configureTable() {
@@ -38,12 +44,15 @@ class IncomeViewController: UIViewController {
 
 extension IncomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return myIncome.count
+        return data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "IncomeCell", for: indexPath) as! IncomeCell
-        cell.textLabel?.text = "\(myIncome[indexPath.row]) руб."
+//        cell.textLabel?.text = "\(myIncome[indexPath.row]) руб."
+//        cell.textLabel?.text = "\(myInc[indexPath.row].income)"
+        cell.configure(index: indexPath.row)
+        
         
         return cell
     }

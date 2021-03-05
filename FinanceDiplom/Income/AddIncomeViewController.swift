@@ -16,6 +16,7 @@ class AddIncomeViewController: UIViewController {
     @IBOutlet weak var closeButton: UIButton!
     
     private let disposeBag = DisposeBag()
+    var income = IncomeData()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,8 +72,16 @@ class AddIncomeViewController: UIViewController {
     }
     
     @IBAction func closeAction(_ sender: Any) {
+        summatextField.text = ""
     }
     
     @IBAction func addIncomeAction(_ sender: Any) {
+        let number = Int(self.summatextField.text ?? "")
+        if let number = number{
+            
+            income.getIncome(income: number)
+            Persistence.shared.save(item: income)
+        }
+        
     }
 }

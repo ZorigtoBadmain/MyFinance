@@ -8,6 +8,10 @@
 import UIKit
 
 class IncomeCell: UITableViewCell {
+    
+    @IBOutlet weak var incomeLabel: UILabel!
+    
+    let items = Persistence.shared.getItems()
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -18,6 +22,13 @@ class IncomeCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func configure(index: Int) {
+        let item = items[index]
+        incomeLabel.text = "\(item.income)"
+        print(items)
+        print(item)
     }
 
 }

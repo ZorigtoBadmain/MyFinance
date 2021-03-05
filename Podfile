@@ -4,8 +4,9 @@
 target 'FinanceDiplom' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-pod 'RxSwift'
+        pod 'RxSwift'
     	pod 'RxCocoa'
+	pod 'RealmSwift'
 
   # Pods for FinanceDiplom
 

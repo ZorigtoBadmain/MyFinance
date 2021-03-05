@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		351ED7F325F1FAE200D5CA8E /* PersistenceRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351ED7F225F1FAE200D5CA8E /* PersistenceRealm.swift */; };
 		355E6FFE25E5472F00F18662 /* AddIncomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355E6FFD25E5472F00F18662 /* AddIncomeViewController.swift */; };
 		35DBBB7525DA950100DA6DB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DBBB7425DA950100DA6DB1 /* AppDelegate.swift */; };
 		35DBBB7725DA950100DA6DB1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DBBB7625DA950100DA6DB1 /* SceneDelegate.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		351ED7F225F1FAE200D5CA8E /* PersistenceRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceRealm.swift; sourceTree = "<group>"; };
 		355E6FFD25E5472F00F18662 /* AddIncomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIncomeViewController.swift; sourceTree = "<group>"; };
 		35DBBB7125DA950100DA6DB1 /* FinanceDiplom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinanceDiplom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35DBBB7425DA950100DA6DB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -62,8 +64,15 @@
 				9EFA32F72417C82B2D6A1F2A /* Pods-FinanceDiplom.debug.xcconfig */,
 				A4B58E541E1C165A6904F8C9 /* Pods-FinanceDiplom.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		351ED7F125F1FABA00D5CA8E /* PersistenceRealm */ = {
+			isa = PBXGroup;
+			children = (
+				351ED7F225F1FAE200D5CA8E /* PersistenceRealm.swift */,
+			);
+			path = PersistenceRealm;
 			sourceTree = "<group>";
 		};
 		35DBBB6825DA950100DA6DB1 = {
@@ -138,6 +147,7 @@
 		35DBBB9F25DAB1AC00DA6DB1 /* Income */ = {
 			isa = PBXGroup;
 			children = (
+				351ED7F125F1FABA00D5CA8E /* PersistenceRealm */,
 				35DBBBA325DAB24D00DA6DB1 /* Cells */,
 				35DBBBA025DAB1E300DA6DB1 /* IncomeViewController.swift */,
 				355E6FFD25E5472F00F18662 /* AddIncomeViewController.swift */,
@@ -281,6 +291,7 @@
 				35DBBB7F25DA950100DA6DB1 /* FinanceDiplom.xcdatamodeld in Sources */,
 				35DBBBA525DAB26600DA6DB1 /* IncomeCell.swift in Sources */,
 				355E6FFE25E5472F00F18662 /* AddIncomeViewController.swift in Sources */,
+				351ED7F325F1FAE200D5CA8E /* PersistenceRealm.swift in Sources */,
 				35DBBB8F25DA9ABB00DA6DB1 /* HomeViewController.swift in Sources */,
 				35DBBB9925DAA4E000DA6DB1 /* CostCategoryViewController.swift in Sources */,
 				35DBBB9225DA9B3300DA6DB1 /* CategoryCell.swift in Sources */,
