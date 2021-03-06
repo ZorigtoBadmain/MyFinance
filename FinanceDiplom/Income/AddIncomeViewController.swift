@@ -66,8 +66,9 @@ class AddIncomeViewController: UIViewController {
     }
     
     func validateIncome(candidate: String) -> Bool {
-        let PHONE_REGEX = "\\d{1,10}"
-        let numberTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
+//        let PHONE_REGEX = "\\d{1,10}"
+        let doubleRegex = "^[0-9]*[.]?[0-9]+$"
+        let numberTest = NSPredicate(format: "SELF MATCHES %@", doubleRegex)
         return numberTest.evaluate(with: candidate)
     }
     
@@ -76,7 +77,7 @@ class AddIncomeViewController: UIViewController {
     }
     
     @IBAction func addIncomeAction(_ sender: Any) {
-        let number = Int(self.summatextField.text ?? "")
+        let number = Double(self.summatextField.text ?? "")
         if let number = number{
             
             income.getIncome(income: number)

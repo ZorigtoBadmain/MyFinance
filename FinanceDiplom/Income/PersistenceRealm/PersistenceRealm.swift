@@ -9,9 +9,9 @@ import Foundation
 import RealmSwift
 
 class IncomeData: Object {
-    @objc dynamic var income: Int = 0
+    @objc dynamic var income: Double = 0
     
-    func getIncome(income: Int) {
+    func getIncome(income: Double) {
         self.income = income
     }
 }
@@ -28,9 +28,9 @@ class Persistence {
         }
     }
     
-    func summa() {
+    func summa() -> Double {
         let allTime: Double = realm.objects(IncomeData.self).sum(ofProperty: "income")
-        print(allTime)
+        return allTime
     }
     
     func getItems() -> Results<IncomeData> {

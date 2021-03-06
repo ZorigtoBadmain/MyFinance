@@ -26,9 +26,7 @@ class IncomeCell: UITableViewCell {
     
     func configure(index: Int) {
         let item = items[index]
-        incomeLabel.text = "\(item.income)"
-        print(items)
-        print(item)
+        incomeLabel.text = "\(item.income) руб."
     }
 
 }

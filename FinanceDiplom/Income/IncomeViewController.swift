@@ -20,6 +20,12 @@ class IncomeViewController: UIViewController {
         }
     }
     
+    var summa = Persistence.shared.summa() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureTable()
@@ -30,8 +36,7 @@ class IncomeViewController: UIViewController {
     func configure() {
         addIncomeButton.layer.cornerRadius = 24
         
-        myMoney.text = "\(Persistence.shared.summa())"
-        print(Persistence.shared.summa())
+        myMoney.text = "\(summa) руб."
    
     }
     
@@ -49,8 +54,6 @@ extension IncomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "IncomeCell", for: indexPath) as! IncomeCell
-//        cell.textLabel?.text = "\(myIncome[indexPath.row]) руб."
-//        cell.textLabel?.text = "\(myInc[indexPath.row].income)"
         cell.configure(index: indexPath.row)
         
         
