@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class IncomeViewController: UIViewController {
 
@@ -14,17 +16,11 @@ class IncomeViewController: UIViewController {
     @IBOutlet weak var addIncomeButton: UIButton!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
-    var data = Persistence.shared.getItems() {
-        didSet {
-            tableView.reloadData()
-        }
-    }
+    private let disposeBag = DisposeBag()
     
-    var summa = Persistence.shared.summa() {
-        didSet {
-            tableView.reloadData()
-        }
-    }
+    var data = Persistence.shared.getItems()
+    
+    var summa = Persistence.shared.summa()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,10 +30,14 @@ class IncomeViewController: UIViewController {
     }
     
     func configure() {
+        
         addIncomeButton.layer.cornerRadius = 24
+        addIncomeButton.rx.tap.subscribe(onNext: {
+            self.tableView.reloadData()
+        })
         
         myMoney.text = "\(summa) руб."
-   
+
     }
     
     func configureTable() {
@@ -48,6 +48,7 @@ class IncomeViewController: UIViewController {
 }
 
 extension IncomeViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }

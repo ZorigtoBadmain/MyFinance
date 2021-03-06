@@ -11,9 +11,11 @@ import RxCocoa
 
 class AddIncomeViewController: UIViewController {
     
-    @IBOutlet weak var summatextField: UITextField!
+    @IBOutlet weak var addIncometextField: UITextField!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var viewAddIncome: UIView!
+    @IBOutlet weak var bottomConstarain: NSLayoutConstraint!
     
     private let disposeBag = DisposeBag()
     var income = IncomeData()
@@ -23,18 +25,19 @@ class AddIncomeViewController: UIViewController {
         configure()
         buttonActivation()
         closeButtonAction()
+        setupNotification()
     }
     
     func configure() {
-        summatextField.placeholder = "Сумма"
-        summatextField.keyboardType = .numberPad
-        summatextField.becomeFirstResponder()
+        addIncometextField.placeholder = "Сумма"
+        addIncometextField.keyboardType = .decimalPad
+        addIncometextField.becomeFirstResponder()
         addButton.layer.cornerRadius = 24
     }
     
     func closeButtonAction() {
         closeButton.rx.tap.subscribe(onNext: { [weak self] in
-            self?.summatextField.text = ""
+            self?.addIncometextField.text = ""
             self?.closeButton.isHidden = true
             self?.addButton.isEnabled = false
             self?.addButton.alpha = 0.1
@@ -42,11 +45,11 @@ class AddIncomeViewController: UIViewController {
     }
     
     func buttonActivation() {
-        let incomeValid: Observable<Bool> = summatextField.rx.text.map { (summa) -> Bool in
+        let incomeValid: Observable<Bool> = addIncometextField.rx.text.map { (summa) -> Bool in
             summa!.count > 0
         }
         
-        let incomeInt: Observable<Bool> = summatextField.rx.text.map { (income) -> Bool in
+        let incomeInt: Observable<Bool> = addIncometextField.rx.text.map { (income) -> Bool in
             self.validateIncome(candidate: income!)
         }
         
@@ -66,23 +69,49 @@ class AddIncomeViewController: UIViewController {
     }
     
     func validateIncome(candidate: String) -> Bool {
-//        let PHONE_REGEX = "\\d{1,10}"
-        let doubleRegex = "^[0-9]*[.]?[0-9]+$"
+        let doubleRegex = "^[0-9]*[,.]?[0-9]+$"
         let numberTest = NSPredicate(format: "SELF MATCHES %@", doubleRegex)
         return numberTest.evaluate(with: candidate)
     }
     
     @IBAction func closeAction(_ sender: Any) {
-        summatextField.text = ""
+        addIncometextField.text = ""
     }
     
     @IBAction func addIncomeAction(_ sender: Any) {
-        let number = Double(self.summatextField.text ?? "")
-        if let number = number{
+
+        let numberFormatter = NumberFormatter()
+        numberFormatter.decimalSeparator = ","
+        let num = numberFormatter.number(from: self.addIncometextField.text ?? "")
+        if let number = num{
             
-            income.getIncome(income: number)
+            income.getIncome(income: Float(truncating: number))
             Persistence.shared.save(item: income)
         }
+        dismiss(animated: true)
         
+    }
+    
+    func setupNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardHide), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func handleKeyboardShow(notification: Notification) {
+        guard let value = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        let keyboardFrame = value.cgRectValue
+        bottomConstarain.constant = keyboardFrame.height
+    }
+    
+    @objc func handleKeyboardHide() {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut) {
+            self.view.transform = .identity
+        } 
+
     }
 }

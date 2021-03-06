@@ -421,7 +421,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JwW-Ir-ZUB">
-                                <rect key="frame" x="0.0" y="415" width="428" height="168"/>
+                                <rect key="frame" x="0.0" y="704" width="428" height="168"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aLv-hS-09J">
                                         <rect key="frame" x="42" y="92" width="344" height="48"/>
@@ -481,15 +481,17 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29535324003067487" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="JwW-Ir-ZUB" secondAttribute="trailing" id="85F-Mr-AuO"/>
-                            <constraint firstAttribute="bottom" secondItem="JwW-Ir-ZUB" secondAttribute="bottom" constant="289" id="NbV-rw-8sI"/>
+                            <constraint firstAttribute="bottom" secondItem="JwW-Ir-ZUB" secondAttribute="bottom" id="NbV-rw-8sI"/>
                             <constraint firstItem="JwW-Ir-ZUB" firstAttribute="leading" secondItem="pkd-4s-qaP" secondAttribute="leading" id="Wj8-yh-E4C"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="alT-bH-xOE"/>
                     <connections>
                         <outlet property="addButton" destination="aLv-hS-09J" id="xcl-V1-FZh"/>
+                        <outlet property="addIncometextField" destination="RlY-Db-pGA" id="NNh-KY-8QC"/>
+                        <outlet property="bottomConstarain" destination="NbV-rw-8sI" id="gm1-ne-6B1"/>
                         <outlet property="closeButton" destination="JpK-3O-ie6" id="5sd-mW-ihW"/>
-                        <outlet property="summatextField" destination="RlY-Db-pGA" id="NNh-KY-8QC"/>
+                        <outlet property="viewAddIncome" destination="JwW-Ir-ZUB" id="jGI-MD-XhJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eeL-cJ-F7X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
