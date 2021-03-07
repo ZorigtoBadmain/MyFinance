@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		351ED7F325F1FAE200D5CA8E /* PersistenceRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351ED7F225F1FAE200D5CA8E /* PersistenceRealm.swift */; };
+		351ED80225F4704100D5CA8E /* AddExpanceCategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351ED80125F4704000D5CA8E /* AddExpanceCategoryController.swift */; };
 		355E6FFE25E5472F00F18662 /* AddIncomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355E6FFD25E5472F00F18662 /* AddIncomeViewController.swift */; };
 		35DBBB7525DA950100DA6DB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DBBB7425DA950100DA6DB1 /* AppDelegate.swift */; };
 		35DBBB7725DA950100DA6DB1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DBBB7625DA950100DA6DB1 /* SceneDelegate.swift */; };
@@ -21,11 +22,14 @@
 		35DBBB9D25DAA5DF00DA6DB1 /* CostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DBBB9C25DAA5DF00DA6DB1 /* CostCell.swift */; };
 		35DBBBA125DAB1E400DA6DB1 /* IncomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DBBBA025DAB1E300DA6DB1 /* IncomeViewController.swift */; };
 		35DBBBA525DAB26600DA6DB1 /* IncomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DBBBA425DAB26600DA6DB1 /* IncomeCell.swift */; };
+		35EA7EC125F4A9AC00FF4DBE /* AddCreditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EA7EC025F4A9AC00FF4DBE /* AddCreditController.swift */; };
+		35EA7ED125F4D2D300FF4DBE /* Credit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EA7ED025F4D2D300FF4DBE /* Credit.swift */; };
 		E7D6D73ED6860097DA918533 /* Pods_FinanceDiplom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7120DC1BB6E599152920D6D /* Pods_FinanceDiplom.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		351ED7F225F1FAE200D5CA8E /* PersistenceRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceRealm.swift; sourceTree = "<group>"; };
+		351ED80125F4704000D5CA8E /* AddExpanceCategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpanceCategoryController.swift; sourceTree = "<group>"; };
 		355E6FFD25E5472F00F18662 /* AddIncomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIncomeViewController.swift; sourceTree = "<group>"; };
 		35DBBB7125DA950100DA6DB1 /* FinanceDiplom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinanceDiplom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35DBBB7425DA950100DA6DB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +45,8 @@
 		35DBBB9C25DAA5DF00DA6DB1 /* CostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostCell.swift; sourceTree = "<group>"; };
 		35DBBBA025DAB1E300DA6DB1 /* IncomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeViewController.swift; sourceTree = "<group>"; };
 		35DBBBA425DAB26600DA6DB1 /* IncomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeCell.swift; sourceTree = "<group>"; };
+		35EA7EC025F4A9AC00FF4DBE /* AddCreditController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCreditController.swift; sourceTree = "<group>"; };
+		35EA7ED025F4D2D300FF4DBE /* Credit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credit.swift; sourceTree = "<group>"; };
 		9EFA32F72417C82B2D6A1F2A /* Pods-FinanceDiplom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinanceDiplom.debug.xcconfig"; path = "Target Support Files/Pods-FinanceDiplom/Pods-FinanceDiplom.debug.xcconfig"; sourceTree = "<group>"; };
 		A4B58E541E1C165A6904F8C9 /* Pods-FinanceDiplom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinanceDiplom.release.xcconfig"; path = "Target Support Files/Pods-FinanceDiplom/Pods-FinanceDiplom.release.xcconfig"; sourceTree = "<group>"; };
 		A7120DC1BB6E599152920D6D /* Pods_FinanceDiplom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinanceDiplom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				351ED7F225F1FAE200D5CA8E /* PersistenceRealm.swift */,
+				35EA7ED025F4D2D300FF4DBE /* Credit.swift */,
 			);
 			path = PersistenceRealm;
 			sourceTree = "<group>";
@@ -115,6 +122,7 @@
 			children = (
 				35DBBB9625DAA46F00DA6DB1 /* Cells */,
 				35DBBB8E25DA9ABB00DA6DB1 /* HomeViewController.swift */,
+				351ED80125F4704000D5CA8E /* AddExpanceCategoryController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -132,6 +140,7 @@
 			children = (
 				35DBBB9B25DAA5BB00DA6DB1 /* Cells */,
 				35DBBB9825DAA4E000DA6DB1 /* CostCategoryViewController.swift */,
+				35EA7EC025F4A9AC00FF4DBE /* AddCreditController.swift */,
 			);
 			path = CostCategory;
 			sourceTree = "<group>";
@@ -286,9 +295,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				35DBBB7525DA950100DA6DB1 /* AppDelegate.swift in Sources */,
+				35EA7EC125F4A9AC00FF4DBE /* AddCreditController.swift in Sources */,
 				35DBBB9D25DAA5DF00DA6DB1 /* CostCell.swift in Sources */,
 				35DBBB7725DA950100DA6DB1 /* SceneDelegate.swift in Sources */,
+				35EA7ED125F4D2D300FF4DBE /* Credit.swift in Sources */,
 				35DBBB7F25DA950100DA6DB1 /* FinanceDiplom.xcdatamodeld in Sources */,
+				351ED80225F4704100D5CA8E /* AddExpanceCategoryController.swift in Sources */,
 				35DBBBA525DAB26600DA6DB1 /* IncomeCell.swift in Sources */,
 				355E6FFE25E5472F00F18662 /* AddIncomeViewController.swift in Sources */,
 				351ED7F325F1FAE200D5CA8E /* PersistenceRealm.swift in Sources */,

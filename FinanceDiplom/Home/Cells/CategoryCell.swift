@@ -9,6 +9,7 @@ import UIKit
 
 class CategoryCell: UITableViewCell {
 
+    let expance = Persistence.shared.getItemsIcome()
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,5 +20,9 @@ class CategoryCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+//    func config() {
+//        
+//    }
 
 }

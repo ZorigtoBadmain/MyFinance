@@ -135,10 +135,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ChN-GK-os6">
-                                <rect key="frame" x="42" y="718" width="344" height="48"/>
+                                <rect key="frame" x="15" y="727" width="398" height="48"/>
                                 <color key="backgroundColor" systemColor="linkColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="344" id="1TU-ua-hsM"/>
                                     <constraint firstAttribute="height" constant="48" id="plD-A4-rcZ"/>
                                 </constraints>
                                 <state key="normal" title="Добавить категорию расходов">
@@ -146,10 +145,11 @@
                                 </state>
                                 <connections>
                                     <action selector="addCategoryAction:" destination="x2B-1B-AoE" eventType="touchUpInside" id="jdB-tX-6rB"/>
+                                    <segue destination="FPE-l5-ROX" kind="show" id="iZH-Hi-T8T"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aBn-c5-qaL">
-                                <rect key="frame" x="0.0" y="106" width="428" height="612"/>
+                                <rect key="frame" x="0.0" y="106" width="428" height="621"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CategoryCell" id="m98-w0-bmZ" customClass="CategoryCell" customModule="FinanceDiplom" customModuleProvider="target">
@@ -167,8 +167,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="ChN-GK-os6" firstAttribute="top" secondItem="aBn-c5-qaL" secondAttribute="bottom" id="CIa-Fn-upv"/>
+                            <constraint firstItem="ChN-GK-os6" firstAttribute="leading" secondItem="j03-A7-g2P" secondAttribute="leading" constant="15" id="EGT-zj-3Kf"/>
                             <constraint firstItem="d6y-5C-ARL" firstAttribute="centerX" secondItem="f0K-sG-Iac" secondAttribute="centerX" id="F8U-SZ-NXS"/>
-                            <constraint firstItem="j03-A7-g2P" firstAttribute="bottom" secondItem="ChN-GK-os6" secondAttribute="bottom" constant="77" id="bs0-vz-IzJ"/>
+                            <constraint firstItem="j03-A7-g2P" firstAttribute="trailing" secondItem="ChN-GK-os6" secondAttribute="trailing" constant="15" id="MH3-cJ-7ah"/>
+                            <constraint firstItem="j03-A7-g2P" firstAttribute="bottom" secondItem="ChN-GK-os6" secondAttribute="bottom" constant="68" id="bs0-vz-IzJ"/>
                             <constraint firstItem="aBn-c5-qaL" firstAttribute="top" secondItem="d6y-5C-ARL" secondAttribute="bottom" constant="8" symbolic="YES" id="f4R-yv-hsu"/>
                             <constraint firstItem="j03-A7-g2P" firstAttribute="trailing" secondItem="aBn-c5-qaL" secondAttribute="trailing" id="gGv-Af-2bA"/>
                             <constraint firstItem="aBn-c5-qaL" firstAttribute="leading" secondItem="j03-A7-g2P" secondAttribute="leading" id="hn5-vX-Mlm"/>
@@ -205,7 +207,7 @@
         <!--Cost Category View Controller-->
         <scene sceneID="HBi-kY-zDJ">
             <objects>
-                <viewController id="gnb-0s-w5l" customClass="CostCategoryViewController" customModule="FinanceDiplom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CostCategoryViewController" id="gnb-0s-w5l" customClass="CostCategoryViewController" customModule="FinanceDiplom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BS0-cR-wnE">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -245,6 +247,9 @@
                                 </state>
                                 <connections>
                                     <action selector="addAction:" destination="gnb-0s-w5l" eventType="touchUpInside" id="woM-aT-KZY"/>
+                                    <segue destination="iPc-om-r8U" kind="popoverPresentation" popoverAnchorView="one-An-ktO" id="SHJ-gd-lBt">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MyA-Pc-msu">
@@ -362,7 +367,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="2ff-y3-Qu0">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="chevron.backward" catalog="system" id="Pet-tp-ogh"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="chevron.backward" catalog="system" id="Pet-tp-ogh">
+                            <connections>
+                                <action selector="backAction:" destination="gnb-0s-w5l" id="MBp-If-2wh"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="addCostButton" destination="one-An-ktO" id="58Z-vv-XZF"/>
@@ -372,7 +381,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eCs-K5-TwB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2728.8000000000002" y="92.203898050974516"/>
+            <point key="canvasLocation" x="3708" y="93"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="fju-Bq-8nn">
@@ -410,7 +419,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vjU-0k-7tt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1926" y="93"/>
+            <point key="canvasLocation" x="2807" y="93"/>
         </scene>
         <!--Add Income View Controller-->
         <scene sceneID="wMV-vU-ubP">
@@ -424,7 +433,7 @@
                                 <rect key="frame" x="0.0" y="704" width="428" height="168"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aLv-hS-09J">
-                                        <rect key="frame" x="42" y="92" width="344" height="48"/>
+                                        <rect key="frame" x="15" y="92" width="398" height="48"/>
                                         <color key="backgroundColor" systemColor="linkColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="T0x-eo-GBo"/>
@@ -454,7 +463,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Сумма" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0S-dP-cm1">
-                                        <rect key="frame" x="40" y="23" width="37" height="14"/>
+                                        <rect key="frame" x="35" y="23" width="37" height="14"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -466,10 +475,10 @@
                                     <constraint firstItem="aLv-hS-09J" firstAttribute="top" secondItem="JpK-3O-ie6" secondAttribute="bottom" constant="20" id="7z3-Kw-m4v"/>
                                     <constraint firstItem="RlY-Db-pGA" firstAttribute="top" secondItem="P0S-dP-cm1" secondAttribute="bottom" constant="8" symbolic="YES" id="Cgo-Uz-UcF"/>
                                     <constraint firstAttribute="bottom" secondItem="aLv-hS-09J" secondAttribute="bottom" constant="28" id="Mxj-QJ-asB"/>
-                                    <constraint firstAttribute="trailing" secondItem="aLv-hS-09J" secondAttribute="trailing" constant="42" id="OlC-xj-ugF"/>
+                                    <constraint firstAttribute="trailing" secondItem="aLv-hS-09J" secondAttribute="trailing" constant="15" id="OlC-xj-ugF"/>
                                     <constraint firstAttribute="height" constant="168" id="PTa-j2-N6Z"/>
-                                    <constraint firstItem="P0S-dP-cm1" firstAttribute="leading" secondItem="JwW-Ir-ZUB" secondAttribute="leading" constant="40" id="Z0e-IR-pMd"/>
-                                    <constraint firstItem="aLv-hS-09J" firstAttribute="leading" secondItem="JwW-Ir-ZUB" secondAttribute="leading" constant="42" id="amK-S8-zDW"/>
+                                    <constraint firstItem="P0S-dP-cm1" firstAttribute="leading" secondItem="JwW-Ir-ZUB" secondAttribute="leading" constant="35" id="Z0e-IR-pMd"/>
+                                    <constraint firstItem="aLv-hS-09J" firstAttribute="leading" secondItem="JwW-Ir-ZUB" secondAttribute="leading" constant="15" id="amK-S8-zDW"/>
                                     <constraint firstItem="RlY-Db-pGA" firstAttribute="leading" secondItem="JwW-Ir-ZUB" secondAttribute="leading" constant="30" id="h71-xS-jWV"/>
                                     <constraint firstItem="JpK-3O-ie6" firstAttribute="leading" secondItem="RlY-Db-pGA" secondAttribute="trailing" constant="8" symbolic="YES" id="lDl-eZ-ex9"/>
                                     <constraint firstItem="aLv-hS-09J" firstAttribute="top" secondItem="RlY-Db-pGA" secondAttribute="bottom" constant="13" id="nvI-o9-7ZK"/>
@@ -491,12 +500,213 @@
                         <outlet property="addIncometextField" destination="RlY-Db-pGA" id="NNh-KY-8QC"/>
                         <outlet property="bottomConstarain" destination="NbV-rw-8sI" id="gm1-ne-6B1"/>
                         <outlet property="closeButton" destination="JpK-3O-ie6" id="5sd-mW-ihW"/>
+                        <outlet property="summaLabel" destination="P0S-dP-cm1" id="cqi-R0-Niw"/>
                         <outlet property="viewAddIncome" destination="JwW-Ir-ZUB" id="jGI-MD-XhJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eeL-cJ-F7X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1925.5999999999999" y="-671.51424287856082"/>
+        </scene>
+        <!--Add Expance Category Controller-->
+        <scene sceneID="W7M-MY-WID">
+            <objects>
+                <viewController id="FPE-l5-ROX" customClass="AddExpanceCategoryController" customModule="FinanceDiplom" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7rR-xv-vgZ">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="872"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jn2-Bd-ROd">
+                                <rect key="frame" x="0.0" y="704" width="428" height="168"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2pi-Cm-ovQ">
+                                        <rect key="frame" x="15" y="92" width="398" height="48"/>
+                                        <color key="backgroundColor" systemColor="linkColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="7ZI-yA-xNh"/>
+                                        </constraints>
+                                        <state key="normal" title="Добавить категорию расходов">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="addAction:" destination="FPE-l5-ROX" eventType="touchUpInside" id="sTK-zh-vQ8"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GkS-U8-0Aj">
+                                        <rect key="frame" x="30" y="45" width="344" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ftt-2D-2jd">
+                                        <rect key="frame" x="382" y="52" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="aZz-WH-FKD"/>
+                                            <constraint firstAttribute="width" constant="20" id="fik-ZI-Wvr"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button" image="clear.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="closeAction:" destination="FPE-l5-ROX" eventType="touchUpInside" id="4pK-2W-Y1c"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Наименование" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jf8-lA-sy1">
+                                        <rect key="frame" x="35" y="23" width="81" height="14"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <constraints>
+                                    <constraint firstItem="Ftt-2D-2jd" firstAttribute="leading" secondItem="GkS-U8-0Aj" secondAttribute="trailing" constant="8" symbolic="YES" id="CkX-gg-ynJ"/>
+                                    <constraint firstItem="GkS-U8-0Aj" firstAttribute="top" secondItem="Jf8-lA-sy1" secondAttribute="bottom" constant="8" symbolic="YES" id="DlT-4K-Edw"/>
+                                    <constraint firstAttribute="bottom" secondItem="2pi-Cm-ovQ" secondAttribute="bottom" constant="28" id="HrH-zH-eWJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ftt-2D-2jd" secondAttribute="trailing" constant="26" id="IXV-6u-TKY"/>
+                                    <constraint firstItem="2pi-Cm-ovQ" firstAttribute="centerX" secondItem="jn2-Bd-ROd" secondAttribute="centerX" id="N4l-Pk-idT"/>
+                                    <constraint firstAttribute="height" constant="168" id="Paf-uW-afm"/>
+                                    <constraint firstAttribute="trailing" secondItem="2pi-Cm-ovQ" secondAttribute="trailing" constant="15" id="UI4-qO-rmR"/>
+                                    <constraint firstItem="2pi-Cm-ovQ" firstAttribute="top" secondItem="Ftt-2D-2jd" secondAttribute="bottom" constant="20" id="crj-qh-guh"/>
+                                    <constraint firstItem="GkS-U8-0Aj" firstAttribute="leading" secondItem="jn2-Bd-ROd" secondAttribute="leading" constant="30" id="nf6-Bk-127"/>
+                                    <constraint firstItem="2pi-Cm-ovQ" firstAttribute="leading" secondItem="jn2-Bd-ROd" secondAttribute="leading" constant="15" id="qDC-IO-X7d"/>
+                                    <constraint firstItem="Jf8-lA-sy1" firstAttribute="leading" secondItem="jn2-Bd-ROd" secondAttribute="leading" constant="35" id="wgQ-SK-t2S"/>
+                                    <constraint firstItem="2pi-Cm-ovQ" firstAttribute="top" secondItem="GkS-U8-0Aj" secondAttribute="bottom" constant="13" id="yPb-3y-7Qf"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="3PO-1c-dYy"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29535324000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="jn2-Bd-ROd" secondAttribute="bottom" id="EOs-AQ-r5w"/>
+                            <constraint firstItem="jn2-Bd-ROd" firstAttribute="leading" secondItem="7rR-xv-vgZ" secondAttribute="leading" id="htp-TP-3sD"/>
+                            <constraint firstAttribute="trailing" secondItem="jn2-Bd-ROd" secondAttribute="trailing" id="kVZ-Ib-bfG"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="JTr-Ud-3Rh"/>
+                    <connections>
+                        <outlet property="addExpanceButton" destination="2pi-Cm-ovQ" id="E97-qa-qrq"/>
+                        <outlet property="bottomConstraint" destination="EOs-AQ-r5w" id="2DO-0z-L12"/>
+                        <outlet property="closeButton" destination="Ftt-2D-2jd" id="4Mh-At-7Ol"/>
+                        <outlet property="expanceTextField" destination="GkS-U8-0Aj" id="uPW-mR-xAW"/>
+                        <outlet property="summaLabel" destination="Jf8-lA-sy1" id="sYX-Tz-JhG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c3l-EA-HuZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1989" y="93"/>
+        </scene>
+        <!--Add Credit Controller-->
+        <scene sceneID="ffJ-TY-TwV">
+            <objects>
+                <viewController id="iPc-om-r8U" customClass="AddCreditController" customModule="FinanceDiplom" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wdU-Gk-KOQ">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="872"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ePy-bR-r84">
+                                <rect key="frame" x="0.0" y="644" width="428" height="228"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oKm-Oc-LOb">
+                                        <rect key="frame" x="15" y="152" width="398" height="48"/>
+                                        <color key="backgroundColor" systemColor="linkColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="9Uc-oK-zXS"/>
+                                        </constraints>
+                                        <state key="normal" title="Добавить категорию расходов">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="addAction:" destination="iPc-om-r8U" eventType="touchUpInside" id="d0S-iZ-qg5"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jUw-Nb-AAl">
+                                        <rect key="frame" x="30" y="105" width="344" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsf-gn-TRV">
+                                        <rect key="frame" x="382" y="112" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="Ede-fK-dy8"/>
+                                            <constraint firstAttribute="width" constant="20" id="PVf-mz-VTz"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button" image="clear.fill" catalog="system"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Наименование" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xe7-xM-fxc">
+                                        <rect key="frame" x="35" y="83" width="81" height="14"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ovY-Bq-sxm">
+                                        <rect key="frame" x="30" y="41" width="344" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QvP-TI-aY5">
+                                        <rect key="frame" x="382" y="48" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="Klw-JX-X8o"/>
+                                            <constraint firstAttribute="height" constant="20" id="LdP-jE-z0m"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button" image="clear.fill" catalog="system"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Наименование" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ldI-N4-jrR">
+                                        <rect key="frame" x="35" y="19" width="81" height="14"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <constraints>
+                                    <constraint firstItem="ovY-Bq-sxm" firstAttribute="leading" secondItem="ePy-bR-r84" secondAttribute="leading" constant="30" id="4zk-gr-HS1"/>
+                                    <constraint firstItem="ovY-Bq-sxm" firstAttribute="top" secondItem="ldI-N4-jrR" secondAttribute="bottom" constant="8" symbolic="YES" id="8G9-iH-ota"/>
+                                    <constraint firstItem="ldI-N4-jrR" firstAttribute="top" secondItem="ePy-bR-r84" secondAttribute="top" constant="19" id="9UP-QQ-nR5"/>
+                                    <constraint firstAttribute="bottom" secondItem="oKm-Oc-LOb" secondAttribute="bottom" constant="28" id="BkH-xA-BCs"/>
+                                    <constraint firstItem="rsf-gn-TRV" firstAttribute="top" secondItem="QvP-TI-aY5" secondAttribute="bottom" constant="44" id="Ec6-3X-s7P"/>
+                                    <constraint firstItem="jUw-Nb-AAl" firstAttribute="top" secondItem="Xe7-xM-fxc" secondAttribute="bottom" constant="8" symbolic="YES" id="Esg-L4-ibd"/>
+                                    <constraint firstItem="oKm-Oc-LOb" firstAttribute="top" secondItem="rsf-gn-TRV" secondAttribute="bottom" constant="20" id="H5e-xu-cgR"/>
+                                    <constraint firstItem="Xe7-xM-fxc" firstAttribute="top" secondItem="ovY-Bq-sxm" secondAttribute="bottom" constant="8" symbolic="YES" id="HYG-lo-fia"/>
+                                    <constraint firstAttribute="height" constant="228" id="KhZ-Iu-Z8C"/>
+                                    <constraint firstItem="oKm-Oc-LOb" firstAttribute="top" secondItem="jUw-Nb-AAl" secondAttribute="bottom" constant="13" id="OGJ-dy-kQK"/>
+                                    <constraint firstItem="Xe7-xM-fxc" firstAttribute="leading" secondItem="ePy-bR-r84" secondAttribute="leading" constant="35" id="Sub-LE-tVh"/>
+                                    <constraint firstItem="QvP-TI-aY5" firstAttribute="leading" secondItem="ovY-Bq-sxm" secondAttribute="trailing" constant="8" symbolic="YES" id="bGj-7E-X42"/>
+                                    <constraint firstItem="rsf-gn-TRV" firstAttribute="leading" secondItem="jUw-Nb-AAl" secondAttribute="trailing" constant="8" symbolic="YES" id="cOu-mi-SKV"/>
+                                    <constraint firstItem="oKm-Oc-LOb" firstAttribute="centerX" secondItem="ePy-bR-r84" secondAttribute="centerX" id="ffR-sY-V7N"/>
+                                    <constraint firstItem="oKm-Oc-LOb" firstAttribute="leading" secondItem="ePy-bR-r84" secondAttribute="leading" constant="15" id="fku-9i-DdW"/>
+                                    <constraint firstItem="ldI-N4-jrR" firstAttribute="leading" secondItem="ePy-bR-r84" secondAttribute="leading" constant="35" id="iqi-DC-dcg"/>
+                                    <constraint firstAttribute="trailing" secondItem="QvP-TI-aY5" secondAttribute="trailing" constant="26" id="mYe-4J-8uD"/>
+                                    <constraint firstAttribute="trailing" secondItem="oKm-Oc-LOb" secondAttribute="trailing" constant="15" id="mcd-qs-0o1"/>
+                                    <constraint firstItem="jUw-Nb-AAl" firstAttribute="leading" secondItem="ePy-bR-r84" secondAttribute="leading" constant="30" id="qL4-Jf-qAc"/>
+                                    <constraint firstAttribute="trailing" secondItem="rsf-gn-TRV" secondAttribute="trailing" constant="26" id="tuz-AO-eP5"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="R6E-0z-47s"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29535324000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="ePy-bR-r84" secondAttribute="bottom" id="9Bs-aO-ibb"/>
+                            <constraint firstAttribute="trailing" secondItem="ePy-bR-r84" secondAttribute="trailing" id="deh-6n-kQh"/>
+                            <constraint firstItem="ePy-bR-r84" firstAttribute="leading" secondItem="wdU-Gk-KOQ" secondAttribute="leading" id="jVZ-uy-Wd3"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="iqd-zG-Xs7"/>
+                    <connections>
+                        <outlet property="addButton" destination="oKm-Oc-LOb" id="9nk-f3-cKw"/>
+                        <outlet property="bottomConstraint" destination="9Bs-aO-ibb" id="mLM-n4-Kjn"/>
+                        <outlet property="nameCloseButton" destination="QvP-TI-aY5" id="KRN-bo-l2l"/>
+                        <outlet property="nameLabel" destination="ldI-N4-jrR" id="7CL-Qc-iqQ"/>
+                        <outlet property="nameTextField" destination="ovY-Bq-sxm" id="h52-CE-yIl"/>
+                        <outlet property="summaCloseButton" destination="rsf-gn-TRV" id="af9-Ln-DT7"/>
+                        <outlet property="summaLabel" destination="Xe7-xM-fxc" id="JIy-MH-v5g"/>
+                        <outlet property="summaTextField" destination="jUw-Nb-AAl" id="u8G-fP-QKE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5hg-w1-2l0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4464.9532710280373" y="92.656587473002162"/>
         </scene>
     </scenes>
     <resources>

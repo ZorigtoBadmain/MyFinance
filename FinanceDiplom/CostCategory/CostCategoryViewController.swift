@@ -13,6 +13,8 @@ class CostCategoryViewController: UIViewController {
     @IBOutlet weak var addCostButton: UIButton!
     @IBOutlet weak var paymentSchaduleButton: UIButton!
     
+    let credit = PersistanseCredit.shared.getItemCredit()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,20 +38,24 @@ class CostCategoryViewController: UIViewController {
     
     @IBAction func addAction(_ sender: Any) {
     }
+    @IBAction func backAction(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
 
 }
 
 extension CostCategoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return credit.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CostCell", for: indexPath) as! CostCell
-        cell.money.text = "10000 Р"
-        cell.nameCategory.text = "ЖКХ"
-        cell.date.text = "23.04.18"
+        let cred = credit[indexPath.row]
+        cell.money.text = "\(cred.number)"
+        cell.nameCategory.text = cred.name
+        cell.date.text = cred.date
         
         return cell
     }

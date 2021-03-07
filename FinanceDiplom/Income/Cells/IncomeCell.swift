@@ -11,7 +11,7 @@ class IncomeCell: UITableViewCell {
     
     @IBOutlet weak var incomeLabel: UILabel!
     
-    let items = Persistence.shared.getItems()
+    let items = Persistence.shared.getItemsIcome()
 
     override func awakeFromNib() {
         super.awakeFromNib()

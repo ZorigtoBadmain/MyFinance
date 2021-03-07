@@ -10,9 +10,23 @@ import RealmSwift
 
 class IncomeData: Object {
     @objc dynamic var income: Float = 0
-    
+   
     func getIncome(income: Float) {
-        self.income = income
+        try? Persistence.shared.realm.write {
+            self.income = income
+        }
+    }
+    
+}
+
+class ExpanceData: Object {
+    @objc dynamic var expance: String = ""
+    @objc dynamic var credit: Credit?
+    
+    func getExpance(expance: String) {
+        try? Persistence.shared.realm.write {
+            self.expance = expance
+        }
     }
 }
 
@@ -21,11 +35,17 @@ class Persistence {
     let realm = try! Realm()
     
     
-    func save(item: IncomeData) {
+    func saveIncome(item: IncomeData) {
         try! realm.write {
             
             realm.add(item)
             
+        }
+    }
+    
+    func saveExpance(item: ExpanceData) {
+        try! realm.write {
+            realm.add(item)
         }
     }
     
@@ -35,12 +55,13 @@ class Persistence {
         return allTime
     }
     
-    func getItems() -> Results<IncomeData> {
+    func getItemsIcome() -> Results<IncomeData> {
         
         return realm.objects(IncomeData.self)
     }
     
-//    func remove() {
-//        
-//    }
+    func getItemsExpance() -> Results<ExpanceData> {
+        return realm.objects(ExpanceData.self)
+    }
+
 }

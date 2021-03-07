@@ -18,7 +18,7 @@ class IncomeViewController: UIViewController {
     
     private let disposeBag = DisposeBag()
     
-    var data = Persistence.shared.getItems()
+    var data = Persistence.shared.getItemsIcome()
     
     var summa = Persistence.shared.summa()
     
