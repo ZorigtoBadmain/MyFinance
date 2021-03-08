@@ -41,7 +41,8 @@ class HomeViewController: UIViewController {
     func getReload() {
         let realm = try! Realm()
         let income = realm.objects(ExpanceData.self)
-        Observable.array(from: income).subscribe(onNext: { [weak self] _ in
+        Observable.array(from: income)
+            .subscribe(onNext: { [weak self] _ in
             guard let self = self else { return }
             self.tableView.reloadData()
             

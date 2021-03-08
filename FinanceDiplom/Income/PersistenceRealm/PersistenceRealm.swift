@@ -11,7 +11,11 @@ import RxRealm
 import RxSwift
 import RxCocoa
 
-class IncomeData: Object {
+class ItemList: Object {
+   let items = List<Income>()
+}
+
+class Income: Object {
     @objc dynamic var income: Float = 0
    
     func getIncome(income: Float) {
@@ -47,9 +51,9 @@ class Persistence {
     let realm = try! Realm()
     
     
-    func saveIncome(item: IncomeData) {
+    
+    func saveIncome(item: Income) {
         try! realm.write {
-            
             realm.add(item)
             
         }
@@ -63,14 +67,14 @@ class Persistence {
     
     func summa() -> Float {
         
-        let allTime: Float = realm.objects(IncomeData.self).sum(ofProperty: "income")
+        let allTime: Float = realm.objects(Income.self).sum(ofProperty: "income")
         
         return allTime
     }
     
-    func getItemsIcome() -> Results<IncomeData> {
+    func getItemsIcome() -> Results<Income> {
         
-        return realm.objects(IncomeData.self)
+        return realm.objects(Income.self)
     }
     
     func getItemsExpance() -> Results<ExpanceData> {

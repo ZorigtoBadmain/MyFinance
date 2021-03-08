@@ -25,7 +25,7 @@ class IncomeCell: UITableViewCell {
     }
     
     func configure(index: Int) {
-        let item = items[index]
+        let item = items.reversed()[index]
         incomeLabel.text = "\(item.income) руб."
     }
 

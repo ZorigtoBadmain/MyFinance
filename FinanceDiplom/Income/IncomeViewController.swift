@@ -20,24 +20,24 @@ class IncomeViewController: UIViewController {
     
     private let disposeBag = DisposeBag()
     
-    var data = Persistence.shared.getItemsIcome()
-    var summa = Persistence.shared.summa()
+    var data = Persistence.shared.getItemsIcome().reversed()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureTable()
         self.configure()
         self.rxAndRealm()
-        
+
     }
     
     func rxAndRealm() {
         let realm = try! Realm()
-        let income = realm.objects(IncomeData.self)
+        let income = realm.objects(Income.self)
+        
         Observable.array(from: income).subscribe(onNext: { [weak self] _ in
             guard let self = self else { return }
             self.tableView.reloadData()
-            let sum: Float = realm.objects(IncomeData.self).sum(ofProperty: "income")
+            let sum: Float = realm.objects(Income.self).sum(ofProperty: "income")
             self.myMoney.text = "\(sum)"
             
         }).disposed(by: disposeBag)
@@ -63,7 +63,6 @@ extension IncomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "IncomeCell", for: indexPath) as! IncomeCell
         cell.configure(index: indexPath.row)
-        
         
         return cell
     }

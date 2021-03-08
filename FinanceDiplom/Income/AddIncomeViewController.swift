@@ -19,7 +19,7 @@ class AddIncomeViewController: UIViewController {
     @IBOutlet weak var bottomConstarain: NSLayoutConstraint!
     
     private let disposeBag = DisposeBag()
-    var income = IncomeData()
+    var income = Income()
     
     override func viewDidLoad() {
         super.viewDidLoad()
