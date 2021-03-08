@@ -6,6 +6,10 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+import RxRealm
+import RealmSwift
 
 class CostCategoryViewController: UIViewController {
 
@@ -14,12 +18,14 @@ class CostCategoryViewController: UIViewController {
     @IBOutlet weak var paymentSchaduleButton: UIButton!
     
     let credit = PersistanseCredit.shared.getItemCredit()
-    
+    var index = 0
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureTable()
         self.configure()
+        getReload()
         
     }
     
@@ -33,16 +39,29 @@ class CostCategoryViewController: UIViewController {
         tableView.dataSource = self
     }
     
+    func getReload() {
+        let realm = try! Realm()
+        let income = realm.objects(Credit.self)
+        Observable.array(from: income).subscribe(onNext: { [weak self] _ in
+            guard let self = self else { return }
+            self.tableView.reloadData()
+            
+        }).disposed(by: disposeBag)
+    }
+    
     @IBAction func paymentAction(_ sender: Any) {
     }
     
     @IBAction func addAction(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "AddCreditController") as! AddCreditController
+        vc.index = index
+        present(vc, animated: true, completion: nil)
+        
     }
     @IBAction func backAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    
-
 }
 
 extension CostCategoryViewController: UITableViewDelegate, UITableViewDataSource {
@@ -59,6 +78,5 @@ extension CostCategoryViewController: UITableViewDelegate, UITableViewDataSource
         
         return cell
     }
-    
     
 }

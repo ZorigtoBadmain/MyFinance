@@ -7,6 +7,9 @@
 
 import Foundation
 import RealmSwift
+import RxRealm
+import RxSwift
+import RxCocoa
 
 class IncomeData: Object {
     @objc dynamic var income: Float = 0
@@ -20,8 +23,17 @@ class IncomeData: Object {
 }
 
 class ExpanceData: Object {
+    @objc dynamic var index: Int = 0
     @objc dynamic var expance: String = ""
-    @objc dynamic var credit: Credit?
+    @objc dynamic var credit: Credit!
+//    let credit = List<Credit>()
+    
+    convenience  init(index: Int, expance: String) {
+        self.init()
+        self.index = index
+        self.expance = expance
+        
+    }
     
     func getExpance(expance: String) {
         try? Persistence.shared.realm.write {
@@ -52,6 +64,7 @@ class Persistence {
     func summa() -> Float {
         
         let allTime: Float = realm.objects(IncomeData.self).sum(ofProperty: "income")
+        
         return allTime
     }
     

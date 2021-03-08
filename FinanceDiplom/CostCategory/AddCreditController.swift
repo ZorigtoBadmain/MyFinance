@@ -23,6 +23,7 @@ class AddCreditController: UIViewController {
     private let disposeBag = DisposeBag()
     
     var creditOne = ExpanceData()
+    var index = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,7 +60,7 @@ class AddCreditController: UIViewController {
             self?.addButton.alpha = 0.1
             self?.summaLabel.isHidden = true
             
-        })
+        }).disposed(by: disposeBag)
     }
     
     func buttonActivation() {
@@ -126,8 +127,8 @@ class AddCreditController: UIViewController {
     @IBAction func addAction(_ sender: Any) {
         let name = nameTextField.text ?? ""
 
-        var time = NSDate()
-        var formatter = DateFormatter()
+        let time = NSDate()
+        let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.YYYY"
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
         let formatteddate = formatter.string(from: time as Date)
@@ -144,6 +145,7 @@ class AddCreditController: UIViewController {
                 PersistanseCredit.shared.save(item: cred)
             
         }
+        dismiss(animated: true, completion: nil)
     }
     
     func setupNotification() {

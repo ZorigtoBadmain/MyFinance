@@ -8,26 +8,25 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxRealm
+import RealmSwift
+
 
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addCategoryButton: UIButton!
     
-    let category = ["Дом", "Продукты", "Досуг", "Постоянные траты", "Путешествия"]
     var expance = Persistence.shared.getItemsExpance()
+    var indexOne = 0
     
-//    let array = BehaviorRelay(value: ExpanceData.self)
-//    let array2 = BehaviorRelay(value: Persistence.shared.getItemsExpance())
-//    let array = BehaviorSubject(value: Persistence.shared.getItemsExpance())
-//    let array = Observable<Any>(Persistence.shared.getItemsExpance())
     let disposeBag = DisposeBag()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureTable()
         self.configure()
+        getReload()
     }
     
     func configure() {
@@ -39,22 +38,22 @@ class HomeViewController: UIViewController {
         self.tableView.dataSource = self
     }
     
-//    func bindTableView() {
-//        array.bind(to: tableView.rx.items) {
-//            (tableView: UITableView, index: Int, element: String) in
-//            let cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
-//            cell.textLabel?.text = element
-//
-//            if let selectedRowIndexPath = tableView.indexPathForSelectedRow {
-//                tableView.deselectRow(at: selectedRowIndexPath, animated: true)
-//            }
-//            return cell
-//        }
-//        .disposed(by: disposeBag)
-//    }
+    func getReload() {
+        let realm = try! Realm()
+        let income = realm.objects(ExpanceData.self)
+        Observable.array(from: income).subscribe(onNext: { [weak self] _ in
+            guard let self = self else { return }
+            self.tableView.reloadData()
+            
+        }).disposed(by: disposeBag)
+    }
    
     @IBAction func addCategoryAction(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "AddExpanceCategoryController") as! AddExpanceCategoryController
+        vc.index = indexOne
         
+        present(vc, animated: true, completion: nil)
     }
     
 }
@@ -74,6 +73,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "CostCategoryViewController") as! CostCategoryViewController
+        indexOne = indexPath.row
+        vc.index = indexOne
         let navigation = UINavigationController(rootViewController: vc)
         navigation.modalTransitionStyle = .crossDissolve
         navigation.modalPresentationStyle = .fullScreen

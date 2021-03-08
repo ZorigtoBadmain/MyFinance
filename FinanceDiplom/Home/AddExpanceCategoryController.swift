@@ -19,6 +19,7 @@ class AddExpanceCategoryController: UIViewController {
     
     private let disposeBag = DisposeBag()
     var expance = ExpanceData()
+    var index = 0
     
     
     override func viewDidLoad() {
@@ -83,9 +84,10 @@ class AddExpanceCategoryController: UIViewController {
     }
     @IBAction func addAction(_ sender: Any) {
         let expan = expanceTextField.text ?? ""
-        
-        expance.getExpance(expance: expan)
-        Persistence.shared.saveExpance(item: expance)
+        print(index)
+        let exp = ExpanceData(index: index, expance: expan)
+//        expance.getExpance(expance: expan)
+        Persistence.shared.saveExpance(item: exp)
         print(expance)
     }
     

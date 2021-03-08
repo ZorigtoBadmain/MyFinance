@@ -145,7 +145,6 @@
                                 </state>
                                 <connections>
                                     <action selector="addCategoryAction:" destination="x2B-1B-AoE" eventType="touchUpInside" id="jdB-tX-6rB"/>
-                                    <segue destination="FPE-l5-ROX" kind="show" id="iZH-Hi-T8T"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aBn-c5-qaL">
@@ -247,9 +246,6 @@
                                 </state>
                                 <connections>
                                     <action selector="addAction:" destination="gnb-0s-w5l" eventType="touchUpInside" id="woM-aT-KZY"/>
-                                    <segue destination="iPc-om-r8U" kind="popoverPresentation" popoverAnchorView="one-An-ktO" id="SHJ-gd-lBt">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MyA-Pc-msu">
@@ -511,13 +507,13 @@
         <!--Add Expance Category Controller-->
         <scene sceneID="W7M-MY-WID">
             <objects>
-                <viewController id="FPE-l5-ROX" customClass="AddExpanceCategoryController" customModule="FinanceDiplom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddExpanceCategoryController" id="FPE-l5-ROX" customClass="AddExpanceCategoryController" customModule="FinanceDiplom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7rR-xv-vgZ">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="872"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jn2-Bd-ROd">
-                                <rect key="frame" x="0.0" y="704" width="428" height="168"/>
+                                <rect key="frame" x="0.0" y="758" width="428" height="168"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2pi-Cm-ovQ">
                                         <rect key="frame" x="15" y="92" width="398" height="48"/>
@@ -597,13 +593,13 @@
         <!--Add Credit Controller-->
         <scene sceneID="ffJ-TY-TwV">
             <objects>
-                <viewController id="iPc-om-r8U" customClass="AddCreditController" customModule="FinanceDiplom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddCreditController" id="iPc-om-r8U" customClass="AddCreditController" customModule="FinanceDiplom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wdU-Gk-KOQ">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="872"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ePy-bR-r84">
-                                <rect key="frame" x="0.0" y="644" width="428" height="228"/>
+                                <rect key="frame" x="0.0" y="698" width="428" height="228"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oKm-Oc-LOb">
                                         <rect key="frame" x="15" y="152" width="398" height="48"/>

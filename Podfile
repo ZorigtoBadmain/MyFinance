@@ -7,6 +7,7 @@ target 'FinanceDiplom' do
         pod 'RxSwift'
     	pod 'RxCocoa'
 	pod 'RealmSwift'
+	pod 'RxRealm'
 
   # Pods for FinanceDiplom
 

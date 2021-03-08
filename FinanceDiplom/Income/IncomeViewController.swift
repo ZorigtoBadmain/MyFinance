@@ -8,6 +8,8 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxRealm
+import RealmSwift
 
 class IncomeViewController: UIViewController {
 
@@ -19,25 +21,30 @@ class IncomeViewController: UIViewController {
     private let disposeBag = DisposeBag()
     
     var data = Persistence.shared.getItemsIcome()
-    
     var summa = Persistence.shared.summa()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureTable()
         self.configure()
+        self.rxAndRealm()
         
     }
     
-    func configure() {
-        
-        addIncomeButton.layer.cornerRadius = 24
-        addIncomeButton.rx.tap.subscribe(onNext: {
+    func rxAndRealm() {
+        let realm = try! Realm()
+        let income = realm.objects(IncomeData.self)
+        Observable.array(from: income).subscribe(onNext: { [weak self] _ in
+            guard let self = self else { return }
             self.tableView.reloadData()
-        })
-        
-        myMoney.text = "\(summa) руб."
-
+            let sum: Float = realm.objects(IncomeData.self).sum(ofProperty: "income")
+            self.myMoney.text = "\(sum)"
+            
+        }).disposed(by: disposeBag)
+    }
+    
+    func configure() {
+        addIncomeButton.layer.cornerRadius = 24
     }
     
     func configureTable() {
@@ -60,6 +67,5 @@ extension IncomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
-    
     
 }
