@@ -27,14 +27,13 @@ class Income: Object {
 }
 
 class ExpanceData: Object {
-    @objc dynamic var index: Int = 0
-    @objc dynamic var expance: String = ""
-    @objc dynamic var credit: Credit!
-//    let credit = List<Credit>()
     
-    convenience  init(index: Int, expance: String) {
+    @objc dynamic var expance: String = ""
+    let creditBuy = List<Credit>()
+    
+    convenience  init(expance: String) {
         self.init()
-        self.index = index
+        
         self.expance = expance
         
     }
@@ -51,6 +50,13 @@ class Persistence {
     let realm = try! Realm()
     
     
+    func addCredit(credit: Credit) {
+        try! realm.write {
+            let expance = ExpanceData()
+            expance.creditBuy.append(credit)
+            realm.add(expance)
+        }
+    }
     
     func saveIncome(item: Income) {
         try! realm.write {

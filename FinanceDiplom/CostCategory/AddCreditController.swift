@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RealmSwift
 
 class AddCreditController: UIViewController {
     
@@ -21,17 +22,21 @@ class AddCreditController: UIViewController {
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
     private let disposeBag = DisposeBag()
+    var nameCategory: String?
+    var index: ExpanceData?
     
     var creditOne = ExpanceData()
-    var index = 0
-
+    let realm = try! Realm()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         configure()
         closeButtonAction()
         buttonActivation()
         setupNotification()
+        
+        
     }
     
     func configure() {
@@ -126,24 +131,32 @@ class AddCreditController: UIViewController {
     
     @IBAction func addAction(_ sender: Any) {
         let name = nameTextField.text ?? ""
-
+        
         let time = NSDate()
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.YYYY"
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
         let formatteddate = formatter.string(from: time as Date)
-
+        
         let numberFormatter = NumberFormatter()
         numberFormatter.decimalSeparator = ","
         let num = numberFormatter.number(from: self.summaTextField.text ?? "")
-
+        
         if let number = num{
             let floatNum = Float(truncating: number)
-
-            let cred = Credit(name: name, date: formatteddate, number: floatNum)
-           
-                PersistanseCredit.shared.save(item: cred)
             
+            let cred = Credit(name: name, date: formatteddate, number: floatNum)
+            print(creditOne.expance)
+            
+            try! realm.write {
+                if let index = index {
+                    index.creditBuy.append(cred)
+                    
+                    realm.add(index)
+                }
+                
+                print(realm.objects(ExpanceData.self))
+            }
         }
         dismiss(animated: true, completion: nil)
     }
@@ -163,8 +176,8 @@ class AddCreditController: UIViewController {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut) {
             self.view.transform = .identity
         }
-
+        
     }
     
-
+    
 }

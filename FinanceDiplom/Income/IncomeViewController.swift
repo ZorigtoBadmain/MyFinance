@@ -19,7 +19,6 @@ class IncomeViewController: UIViewController {
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
     private let disposeBag = DisposeBag()
-    
     var data = Persistence.shared.getItemsIcome().reversed()
     
     override func viewDidLoad() {

@@ -18,7 +18,6 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var addCategoryButton: UIButton!
     
     var expance = Persistence.shared.getItemsExpance()
-    var indexOne = 0
     
     let disposeBag = DisposeBag()
     
@@ -52,8 +51,6 @@ class HomeViewController: UIViewController {
     @IBAction func addCategoryAction(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "AddExpanceCategoryController") as! AddExpanceCategoryController
-        vc.index = indexOne
-        
         present(vc, animated: true, completion: nil)
     }
     
@@ -74,8 +71,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "CostCategoryViewController") as! CostCategoryViewController
-        indexOne = indexPath.row
-        vc.index = indexOne
+        let nameCategory = expance[indexPath.row].expance
+        let index = expance[indexPath.row]
+        vc.titleCat = nameCategory
+        vc.index = index
         let navigation = UINavigationController(rootViewController: vc)
         navigation.modalTransitionStyle = .crossDissolve
         navigation.modalPresentationStyle = .fullScreen

@@ -20,18 +20,3 @@ class Credit: Object {
         self.number = number
     }
 }
-
-class PersistanseCredit {
-    static let shared = PersistanseCredit()
-    let realm = try! Realm()
-    
-    func save(item: Credit) {
-        try! realm.write {
-            realm.add(item)
-        }
-    }
-    
-    func getItemCredit() -> Results<Credit> {
-        return realm.objects(Credit.self)
-    }
-}
