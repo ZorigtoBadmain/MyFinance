@@ -17,9 +17,9 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addCategoryButton: UIButton!
     
-    var expance = Persistence.shared.getItemsExpance()
+    private var expance = Persistence.shared.getItemsExpance()
     
-    let disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,16 +28,16 @@ class HomeViewController: UIViewController {
         getReload()
     }
     
-    func configure() {
+    private func configure() {
         addCategoryButton.layer.cornerRadius = 24
     }
     
-    func configureTable() {
+    private func configureTable() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
     }
     
-    func getReload() {
+    private func getReload() {
         let realm = try! Realm()
         let income = realm.objects(ExpanceData.self)
         Observable.array(from: income)
@@ -50,7 +50,8 @@ class HomeViewController: UIViewController {
    
     @IBAction func addCategoryAction(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: "AddExpanceCategoryController") as! AddExpanceCategoryController
+        let vc = storyboard.instantiateViewController(identifier: "AddIncomeViewController") as! AddIncomeViewController
+        vc.index = 1
         present(vc, animated: true, completion: nil)
     }
     

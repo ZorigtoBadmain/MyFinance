@@ -57,6 +57,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="addIncomeAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qYg-7P-2uN"/>
                                     <segue destination="3XC-Em-bnD" kind="show" id="n39-ak-aiC"/>
                                 </connections>
                             </button>
@@ -420,7 +421,7 @@
         <!--Add Income View Controller-->
         <scene sceneID="wMV-vU-ubP">
             <objects>
-                <viewController id="3XC-Em-bnD" customClass="AddIncomeViewController" customModule="FinanceDiplom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddIncomeViewController" id="3XC-Em-bnD" customClass="AddIncomeViewController" customModule="FinanceDiplom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pkd-4s-qaP">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="872"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -497,98 +498,11 @@
                         <outlet property="bottomConstarain" destination="NbV-rw-8sI" id="gm1-ne-6B1"/>
                         <outlet property="closeButton" destination="JpK-3O-ie6" id="5sd-mW-ihW"/>
                         <outlet property="summaLabel" destination="P0S-dP-cm1" id="cqi-R0-Niw"/>
-                        <outlet property="viewAddIncome" destination="JwW-Ir-ZUB" id="jGI-MD-XhJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eeL-cJ-F7X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1925.5999999999999" y="-671.51424287856082"/>
-        </scene>
-        <!--Add Expance Category Controller-->
-        <scene sceneID="W7M-MY-WID">
-            <objects>
-                <viewController storyboardIdentifier="AddExpanceCategoryController" id="FPE-l5-ROX" customClass="AddExpanceCategoryController" customModule="FinanceDiplom" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="7rR-xv-vgZ">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jn2-Bd-ROd">
-                                <rect key="frame" x="0.0" y="758" width="428" height="168"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2pi-Cm-ovQ">
-                                        <rect key="frame" x="15" y="92" width="398" height="48"/>
-                                        <color key="backgroundColor" systemColor="linkColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="48" id="7ZI-yA-xNh"/>
-                                        </constraints>
-                                        <state key="normal" title="Добавить категорию расходов">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="addAction:" destination="FPE-l5-ROX" eventType="touchUpInside" id="sTK-zh-vQ8"/>
-                                        </connections>
-                                    </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GkS-U8-0Aj">
-                                        <rect key="frame" x="30" y="45" width="344" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ftt-2D-2jd">
-                                        <rect key="frame" x="382" y="52" width="20" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="aZz-WH-FKD"/>
-                                            <constraint firstAttribute="width" constant="20" id="fik-ZI-Wvr"/>
-                                        </constraints>
-                                        <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="Button" image="clear.fill" catalog="system"/>
-                                        <connections>
-                                            <action selector="closeAction:" destination="FPE-l5-ROX" eventType="touchUpInside" id="4pK-2W-Y1c"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Наименование" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jf8-lA-sy1">
-                                        <rect key="frame" x="35" y="23" width="81" height="14"/>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemGray5Color"/>
-                                <constraints>
-                                    <constraint firstItem="Ftt-2D-2jd" firstAttribute="leading" secondItem="GkS-U8-0Aj" secondAttribute="trailing" constant="8" symbolic="YES" id="CkX-gg-ynJ"/>
-                                    <constraint firstItem="GkS-U8-0Aj" firstAttribute="top" secondItem="Jf8-lA-sy1" secondAttribute="bottom" constant="8" symbolic="YES" id="DlT-4K-Edw"/>
-                                    <constraint firstAttribute="bottom" secondItem="2pi-Cm-ovQ" secondAttribute="bottom" constant="28" id="HrH-zH-eWJ"/>
-                                    <constraint firstAttribute="trailing" secondItem="Ftt-2D-2jd" secondAttribute="trailing" constant="26" id="IXV-6u-TKY"/>
-                                    <constraint firstItem="2pi-Cm-ovQ" firstAttribute="centerX" secondItem="jn2-Bd-ROd" secondAttribute="centerX" id="N4l-Pk-idT"/>
-                                    <constraint firstAttribute="height" constant="168" id="Paf-uW-afm"/>
-                                    <constraint firstAttribute="trailing" secondItem="2pi-Cm-ovQ" secondAttribute="trailing" constant="15" id="UI4-qO-rmR"/>
-                                    <constraint firstItem="2pi-Cm-ovQ" firstAttribute="top" secondItem="Ftt-2D-2jd" secondAttribute="bottom" constant="20" id="crj-qh-guh"/>
-                                    <constraint firstItem="GkS-U8-0Aj" firstAttribute="leading" secondItem="jn2-Bd-ROd" secondAttribute="leading" constant="30" id="nf6-Bk-127"/>
-                                    <constraint firstItem="2pi-Cm-ovQ" firstAttribute="leading" secondItem="jn2-Bd-ROd" secondAttribute="leading" constant="15" id="qDC-IO-X7d"/>
-                                    <constraint firstItem="Jf8-lA-sy1" firstAttribute="leading" secondItem="jn2-Bd-ROd" secondAttribute="leading" constant="35" id="wgQ-SK-t2S"/>
-                                    <constraint firstItem="2pi-Cm-ovQ" firstAttribute="top" secondItem="GkS-U8-0Aj" secondAttribute="bottom" constant="13" id="yPb-3y-7Qf"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="3PO-1c-dYy"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29535324000000002" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="jn2-Bd-ROd" secondAttribute="bottom" id="EOs-AQ-r5w"/>
-                            <constraint firstItem="jn2-Bd-ROd" firstAttribute="leading" secondItem="7rR-xv-vgZ" secondAttribute="leading" id="htp-TP-3sD"/>
-                            <constraint firstAttribute="trailing" secondItem="jn2-Bd-ROd" secondAttribute="trailing" id="kVZ-Ib-bfG"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="JTr-Ud-3Rh"/>
-                    <connections>
-                        <outlet property="addExpanceButton" destination="2pi-Cm-ovQ" id="E97-qa-qrq"/>
-                        <outlet property="bottomConstraint" destination="EOs-AQ-r5w" id="2DO-0z-L12"/>
-                        <outlet property="closeButton" destination="Ftt-2D-2jd" id="4Mh-At-7Ol"/>
-                        <outlet property="expanceTextField" destination="GkS-U8-0Aj" id="uPW-mR-xAW"/>
-                        <outlet property="summaLabel" destination="Jf8-lA-sy1" id="sYX-Tz-JhG"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="c3l-EA-HuZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1989" y="93"/>
+            <point key="canvasLocation" x="1776" y="-671"/>
         </scene>
         <!--Add Credit Controller-->
         <scene sceneID="ffJ-TY-TwV">

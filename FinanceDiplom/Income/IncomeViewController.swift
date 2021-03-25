@@ -29,7 +29,7 @@ class IncomeViewController: UIViewController {
 
     }
     
-    func rxAndRealm() {
+    private func rxAndRealm() {
         let realm = try! Realm()
         let income = realm.objects(Income.self)
         
@@ -42,15 +42,21 @@ class IncomeViewController: UIViewController {
         }).disposed(by: disposeBag)
     }
     
-    func configure() {
+    private func configure() {
         addIncomeButton.layer.cornerRadius = 24
     }
     
-    func configureTable() {
+    private func configureTable() {
         tableView.delegate = self
         tableView.dataSource = self
     }
     
+    @IBAction func addIncomeAction(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "AddIncomeViewController") as! AddIncomeViewController
+        vc.index = 0
+        present(vc, animated: true, completion: nil)
+    }
 }
 
 extension IncomeViewController: UITableViewDelegate, UITableViewDataSource {

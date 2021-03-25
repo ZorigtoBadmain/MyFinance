@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		351ED7F325F1FAE200D5CA8E /* PersistenceRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351ED7F225F1FAE200D5CA8E /* PersistenceRealm.swift */; };
-		351ED80225F4704100D5CA8E /* AddExpanceCategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351ED80125F4704000D5CA8E /* AddExpanceCategoryController.swift */; };
 		355E6FFE25E5472F00F18662 /* AddIncomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355E6FFD25E5472F00F18662 /* AddIncomeViewController.swift */; };
 		35DBBB7525DA950100DA6DB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DBBB7425DA950100DA6DB1 /* AppDelegate.swift */; };
 		35DBBB7725DA950100DA6DB1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DBBB7625DA950100DA6DB1 /* SceneDelegate.swift */; };
@@ -29,7 +28,6 @@
 
 /* Begin PBXFileReference section */
 		351ED7F225F1FAE200D5CA8E /* PersistenceRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceRealm.swift; sourceTree = "<group>"; };
-		351ED80125F4704000D5CA8E /* AddExpanceCategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpanceCategoryController.swift; sourceTree = "<group>"; };
 		355E6FFD25E5472F00F18662 /* AddIncomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIncomeViewController.swift; sourceTree = "<group>"; };
 		35DBBB7125DA950100DA6DB1 /* FinanceDiplom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinanceDiplom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35DBBB7425DA950100DA6DB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -122,7 +120,6 @@
 			children = (
 				35DBBB9625DAA46F00DA6DB1 /* Cells */,
 				35DBBB8E25DA9ABB00DA6DB1 /* HomeViewController.swift */,
-				351ED80125F4704000D5CA8E /* AddExpanceCategoryController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -300,7 +297,6 @@
 				35DBBB7725DA950100DA6DB1 /* SceneDelegate.swift in Sources */,
 				35EA7ED125F4D2D300FF4DBE /* Credit.swift in Sources */,
 				35DBBB7F25DA950100DA6DB1 /* FinanceDiplom.xcdatamodeld in Sources */,
-				351ED80225F4704100D5CA8E /* AddExpanceCategoryController.swift in Sources */,
 				35DBBBA525DAB26600DA6DB1 /* IncomeCell.swift in Sources */,
 				355E6FFE25E5472F00F18662 /* AddIncomeViewController.swift in Sources */,
 				351ED7F325F1FAE200D5CA8E /* PersistenceRealm.swift in Sources */,

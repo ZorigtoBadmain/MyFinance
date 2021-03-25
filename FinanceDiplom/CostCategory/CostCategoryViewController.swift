@@ -17,10 +17,9 @@ class CostCategoryViewController: UIViewController {
     @IBOutlet weak var addCostButton: UIButton!
     @IBOutlet weak var paymentSchaduleButton: UIButton!
     
-    let credit = Persistence.shared.getItemsExpance()
     var titleCat: String?
     var index: ExpanceData?
-    let disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,17 +30,17 @@ class CostCategoryViewController: UIViewController {
         
     }
     
-    func configure() {
+    private func configure() {
         paymentSchaduleButton.layer.cornerRadius = 24
         addCostButton.layer.cornerRadius = 26
     }
     
-    func configureTable() {
+    private func configureTable() {
         tableView.delegate = self
         tableView.dataSource = self
     }
     
-    func getReload() {
+    private func getReload() {
         let realm = try! Realm()
         let income = realm.objects(ExpanceData.self)
         Observable.array(from: income).subscribe(onNext: { [weak self] _ in

@@ -15,28 +15,46 @@ class AddIncomeViewController: UIViewController {
     @IBOutlet weak var addIncometextField: UITextField!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
-    @IBOutlet weak var viewAddIncome: UIView!
     @IBOutlet weak var bottomConstarain: NSLayoutConstraint!
     
     private let disposeBag = DisposeBag()
-    var income = Income()
+    private var income = Income()
+    var index = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         configure()
-        buttonActivation()
+        if index == 0 {
+            configureIncome()
+            buttonIncomeActivation()
+        } else {
+            configureExpance()
+            buttonExpanceActivation()
+        }
+        
         closeButtonAction()
         setupNotification()
     }
     
-    func configure() {
-        addIncometextField.placeholder = "Сумма"
-        addIncometextField.keyboardType = .decimalPad
+    private func configure() {
         addIncometextField.becomeFirstResponder()
         addButton.layer.cornerRadius = 24
     }
     
-    func closeButtonAction() {
+    private func configureIncome() {
+        addIncometextField.placeholder = "Сумма"
+        addIncometextField.keyboardType = .decimalPad
+        
+    }
+    
+    private func configureExpance() {
+        addIncometextField.placeholder = "Наименование"
+        addIncometextField.keyboardType = .default
+    
+    }
+    
+    private func closeButtonAction() {
         closeButton.rx.tap.subscribe(onNext: { [weak self] in
             self?.addIncometextField.text = ""
             self?.closeButton.isHidden = true
@@ -46,7 +64,7 @@ class AddIncomeViewController: UIViewController {
         }).disposed(by: disposeBag)
     }
     
-    func buttonActivation() {
+    private func buttonIncomeActivation() {
         let incomeValid: Observable<Bool> = addIncometextField.rx.text.map { (summa) -> Bool in
             summa!.count > 0
         }
@@ -72,8 +90,40 @@ class AddIncomeViewController: UIViewController {
             }).disposed(by: disposeBag)
     }
     
-    func validateIncome(candidate: String) -> Bool {
+    private func buttonExpanceActivation() {
+        let incomeValid: Observable<Bool> = addIncometextField.rx.text.map { (summa) -> Bool in
+            summa!.count > 0
+        }
+        
+        let incomeInt: Observable<Bool> = addIncometextField.rx.text.map { (income) -> Bool in
+            self.validateExpance(candidate: income!)
+        }
+        
+        Observable.combineLatest(incomeValid, incomeInt)
+            .subscribe(onNext: { summa, number in
+                if (summa, number) == (true, true) {
+                    self.closeButton.isHidden = false
+                    self.addButton.isEnabled = true
+                    self.addButton.alpha = 1
+                    self.summaLabel.isHidden = false
+                } else {
+                    self.closeButton.isHidden = true
+                    self.addButton.isEnabled = false
+                    self.addButton.alpha = 0.1
+                    self.summaLabel.isHidden = true
+                }
+                
+            }).disposed(by: disposeBag)
+    }
+    
+    private func validateIncome(candidate: String) -> Bool {
         let doubleRegex = "^[0-9]*[,.]?[0-9]+$"
+        let numberTest = NSPredicate(format: "SELF MATCHES %@", doubleRegex)
+        return numberTest.evaluate(with: candidate)
+    }
+    
+    private func validateExpance(candidate: String) -> Bool {
+        let doubleRegex = "^[а-я]+$"
         let numberTest = NSPredicate(format: "SELF MATCHES %@", doubleRegex)
         return numberTest.evaluate(with: candidate)
     }
@@ -84,6 +134,7 @@ class AddIncomeViewController: UIViewController {
     
     @IBAction func addIncomeAction(_ sender: Any) {
 
+        if index == 0 {
         let numberFormatter = NumberFormatter()
         numberFormatter.decimalSeparator = ","
         let num = numberFormatter.number(from: self.addIncometextField.text ?? "")
@@ -93,10 +144,16 @@ class AddIncomeViewController: UIViewController {
             Persistence.shared.saveIncome(item: income)
         }
         dismiss(animated: true)
+        } else {
+            let expan = addIncometextField.text ?? ""
+            let exp = ExpanceData(expance: expan)
+            Persistence.shared.saveExpance(item: exp)
+            dismiss(animated: true, completion: nil)
+        }
         
     }
     
-    func setupNotification() {
+    private func setupNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardHide), name: UIResponder.keyboardWillShowNotification, object: nil)
     }

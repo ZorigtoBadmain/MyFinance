@@ -39,7 +39,7 @@ class AddCreditController: UIViewController {
         
     }
     
-    func configure() {
+    private func configure() {
         nameTextField.placeholder = "Наименование"
         nameTextField.keyboardType = .default
         nameTextField.becomeFirstResponder()
@@ -49,7 +49,7 @@ class AddCreditController: UIViewController {
         
     }
     
-    func closeButtonAction() {
+    private func closeButtonAction() {
         nameCloseButton.rx.tap.subscribe(onNext: { [weak self] in
             self?.nameTextField.text = ""
             self?.nameCloseButton.isHidden = true
@@ -68,7 +68,7 @@ class AddCreditController: UIViewController {
         }).disposed(by: disposeBag)
     }
     
-    func buttonActivation() {
+    private func buttonActivation() {
         let nameValid: Observable<Bool> = nameTextField.rx.text.map { (summa) -> Bool in
             summa!.count > 0
         }
@@ -117,13 +117,13 @@ class AddCreditController: UIViewController {
             }).disposed(by: disposeBag)
     }
     
-    func validateName(candidate: String) -> Bool {
+    private func validateName(candidate: String) -> Bool {
         let doubleRegex = "^[а-я0-9_]+$"
         let numberTest = NSPredicate(format: "SELF MATCHES %@", doubleRegex)
         return numberTest.evaluate(with: candidate)
     }
     
-    func validateCredit(candidate: String) -> Bool {
+    private func validateCredit(candidate: String) -> Bool {
         let doubleRegex = "^[0-9]*[,.]?[0-9]+$"
         let numberTest = NSPredicate(format: "SELF MATCHES %@", doubleRegex)
         return numberTest.evaluate(with: candidate)
@@ -161,7 +161,7 @@ class AddCreditController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    func setupNotification() {
+    private func setupNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardHide), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
